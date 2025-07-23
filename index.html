@@ -1,0 +1,184 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Boletos para Concierto</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="kaelion-logo.png" alt="Logo KAELION" class="logo-default">
+                <img src="geometric-symbol.png" alt="Geometric Symbol" class="logo-hover">
+            </div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#events">Eventos</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <img src="main-image.png" alt="Imagen del concierto" class="hero-image">
+            <div class="hero-text">
+                <h1>Gira 2026 - Arena CDMX</h1>
+                <p>Los mejores conciertos del año en un solo lugar.</p>
+            </div>
+        </section>
+
+        <section id="events" class="events-section">
+            <h2>Próximos Eventos</h2>
+            <div id="events-container" class="events-container">
+                <!-- Los eventos se insertarán aquí dinámicamente como boletos interactivos -->
+            </div>
+        </section>
+
+        <section class="tickets-placeholder" style="display: none;">
+            <h2>Compra tus Boletos</h2>
+            <div class="ticket-options">
+                <div class="ticket-type" id="general-ticket">
+                    <h3>General</h3>
+                    <p class="price">$50.00</p>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" class="quantity-input" value="0" min="0" data-price="50">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                </div>
+                <div class="ticket-type" id="vip-ticket">
+                    <h3>VIP</h3>
+                    <p class="price">$120.00</p>
+                    <div class="quantity-selector">
+                        <button class="quantity-btn minus">-</button>
+                        <input type="number" class="quantity-input" value="0" min="0" data-price="120">
+                        <button class="quantity-btn plus">+</button>
+                    </div>
+                </div>
+            </div>
+            <div class="total-section">
+                <h3>Total: $<span id="total-price">0.00</span></h3>
+                <button id="buy-btn-placeholder">Comprar Boletos</button>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contacto</h2>
+            <p>¿Tienes alguna pregunta? Envíanos un mensaje y te responderemos a la brevedad.</p>
+            <form id="contact-form">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Enviar Mensaje</button>
+            </form>
+        </section>
+    </main>
+
+    <div id="ticket-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <div id="modal-header">
+                <h2 id="modal-artist-name"></h2>
+                <p id="modal-event-details"></p>
+            </div>
+            <div class="tickets">
+                <h2>Compra tus Boletos</h2>
+                <div class="ticket-options">
+                    <div class="ticket-type" id="general-ticket-modal">
+                        <h3>General</h3>
+                        <p class="price" id="modal-general-price">$0.00</p>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" aria-label="Disminuir cantidad de boletos General">-</button>
+                            <input type="number" class="quantity-input" value="0" min="0" data-ticket-type="general">
+                            <button class="quantity-btn plus" aria-label="Aumentar cantidad de boletos General">+</button>
+                        </div>
+                    </div>
+                    <div class="ticket-type" id="vip-ticket-modal">
+                        <h3>VIP</h3>
+                        <p class="price" id="modal-vip-price">$0.00</p>
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus" aria-label="Disminuir cantidad de boletos VIP">-</button>
+                            <input type="number" class="quantity-input" value="0" min="0" data-ticket-type="vip">
+                            <button class="quantity-btn plus" aria-label="Aumentar cantidad de boletos VIP">+</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="total-section">
+                    <h3>Total: $<span id="total-price-modal">0.00</span></h3>
+                    <div id="paypal-button-container" style="min-height: 48px;"></div>
+                    <button id="buy-btn" style="display: none;">Comprar Boletos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ticket Confirmation Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content ticket-design">
+            <span class="close-button conf-close-button">&times;</span>
+            <div class="ticket-header">
+                <img src="kaelion-logo.png" alt="KAELION Logo" class="ticket-logo">
+                <h3>ADMIT ONE</h3>
+            </div>
+            <div class="ticket-body">
+                <div class="ticket-main-info">
+                    <h2 id="ticket-artist-name"></h2>
+                    <p class="tour-name">Gira 2026</p>
+                    <div class="ticket-details">
+                        <p><strong>Fecha:</strong> <span id="ticket-event-date"></span></p>
+                        <p><strong>Lugar:</strong> <span id="ticket-event-venue"></span></p>
+                    </div>
+                </div>
+                <div class="ticket-qr-section">
+                     <div id="qrcode"></div>
+                     <p id="ticket-type-info"></p>
+                </div>
+            </div>
+            <div class="ticket-stub">
+                 <div class="stub-info">
+                    <p><strong>Artista:</strong> <span id="stub-artist"></span></p>
+                    <p><strong>Tipo:</strong> <span id="stub-ticket-type"></span></p>
+                 </div>
+                 <div class="ticket-barcode"></div>
+            </div>
+            <div class="ticket-actions">
+                <button id="print-ticket-btn">Imprimir / Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="social-media">
+            <a href="https://music.amazon.com" target="_blank" aria-label="Amazon Music"><img src="amazon-music.png" alt="Amazon Music"></a>
+            <a href="https://music.apple.com" target="_blank" aria-label="Apple Music"><img src="apple-music.png" alt="Apple Music"></a>
+            <a href="https://open.spotify.com" target="_blank" aria-label="Spotify"><img src="spotify.png" alt="Spotify"></a>
+            <a href="https://www.deezer.com" target="_blank" aria-label="Deezer"><img src="deezer.png" alt="Deezer"></a>
+            <a href="https://tidal.com" target="_blank" aria-label="Tidal"><img src="tidal.png" alt="Tidal"></a>
+        </div>
+        <p>&copy; 2023 Live! Tickets. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- 
+      Replace "test" with your own PayPal client ID for production.
+      You can get a client ID from the PayPal Developer Dashboard.
+      https://developer.paypal.com/
+    -->
+    <script src="https://www.paypal.com/sdk/js?client-id=test&currency=USD&disable-funding=venmo,card"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/qrcode-generator/qrcode.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
