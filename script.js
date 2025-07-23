@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const concerts = [
         {
-            artist: "Stellar Echoes",
+            artist: "Fuego Primordial",
             date: "15 de Mayo, 2026",
             time: "20:00",
             venue: "Arena Ciudad de México",
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?w=800'
         },
         {
-            artist: "Crimson Cascade",
+            artist: "Agua Solar",
             date: "22 de Junio, 2026",
             time: "21:00",
             venue: "Arena Ciudad de México",
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=800'
         },
         {
-            artist: "Neon Phantoms",
+            artist: "Espejo Cósmico",
             date: "18 de Julio, 2026",
             time: "20:30",
             venue: "Arena Ciudad de México",
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?w=800'
         },
         {
-            artist: "Solar Bloom",
+            artist: "Raíz de la Tierra",
             date: "05 de Agosto, 2026",
             time: "19:00",
             venue: "Arena Ciudad de México",
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800'
         },
         {
-            artist: "Lunar Tides",
+            artist: "Ascensión de la Luz",
             date: "10 de Septiembre, 2026",
             time: "21:00",
             venue: "Arena Ciudad de México",
